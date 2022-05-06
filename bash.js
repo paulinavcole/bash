@@ -6,15 +6,15 @@ process.stdin.on('data', (data, fileName) => {
   const cmd = data.toString().trim(); //remove the newline
   if(cmd === 'pwd') {
     const pwd= require('./pwd');
-    pwd()
+    return pwd()
   }
   if (cmd === 'ls') {
     const ls = require('./ls');
-    ls()
+    return ls()
   }
   if (cmd.startsWith('cat')) {
     const cat = require('./cat')
-    cat()
+    return cat(cmd)
   }
   else {
       process.stdout.write('You typed: ' + cmd);
